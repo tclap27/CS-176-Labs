@@ -69,6 +69,10 @@ public class Student
 		return this.email;
 	}
 	
+	public String getAdvisor()
+	{
+		return this.advisor;
+	}
 
 	//over object to return string
 

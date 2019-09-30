@@ -1,9 +1,10 @@
 package edu.monmouth.cs176.s1218375.lab03;
+import java.util.ArrayList;
 
 public class StudentList
 {
 	
-Student [] cs176Students;
+ArrayList<Student> cs176Students;
 
 private int count = 0;
 
@@ -11,31 +12,35 @@ private int count = 0;
 * Constructor for StudentList Class
 */
 
-StudentList (int totalStudents)
+//initializes cs176Students as a new ArrayList
+StudentList ()
 {
-	cs176Students = new Student[totalStudents];
+	cs176Students = new ArrayList<Student>();
 }
 
 /**
 * @param s - new Student object
 */
 
+//adds student to list
 public void addStudent (Student s)
 {
-	cs176Students[count] = s;
-	count++;
+	cs176Students.add(s);
 }
 
 /**
 * List the students using for-each loop
 */
 
+//lists students
 public void listStudents()
 { 
 	for(Student s : cs176Students)
 		System.out.println(s.toString());
 }
 
+
+//updates the students graduation year
 public boolean updateStudentGraduationYear (String ID, Integer year)
 {
 	boolean results = false;
@@ -48,6 +53,7 @@ public boolean updateStudentGraduationYear (String ID, Integer year)
 	return results;
 }
 
+//finds student by ID
 public Student Find (String ID)
 {
 	for(Student s : cs176Students)
@@ -58,6 +64,7 @@ public Student Find (String ID)
 	return null;
 }
 
+//updates major list
 public Integer studentCount(String major)
 {
 	Integer count = 0;
@@ -69,6 +76,7 @@ public Integer studentCount(String major)
 	return count;
 }
 
+//finds a student by their email
 public Student getStudentInfo(String email)
 {	
 	for(Student s: cs176Students)
@@ -81,6 +89,7 @@ public Student getStudentInfo(String email)
 	return null;
 }
 
+//finds student by a key and value
 public Student findStudentByKey(String key, String value)
 {
 	Student foundStudent = null;
@@ -97,6 +106,10 @@ public Student findStudentByKey(String key, String value)
 		case "email":
 			foundValue = s.getEmail();
 			break;
+		
+		case "advisor":
+			foundValue = s.getAdvisor();
+			break;
 				
 		default:
 			foundValue = "";
@@ -110,6 +123,20 @@ public Student findStudentByKey(String key, String value)
 return foundStudent;
 		
 }
-
-
+//extra credit
+//Finds students based on advisor
+public void listStudentForAdvisor(String advisor)
+{
+	for(Student s: cs176Students)
+	{
+		if(s.getAdvisor() == advisor)
+		{
+			 System.out.println("Students Listed For Advisor: ");
+			 System.out.println(s.toString());		
+			
+		}
+	}
+	
 }
+}
+
